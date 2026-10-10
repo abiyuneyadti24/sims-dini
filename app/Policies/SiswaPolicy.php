@@ -44,7 +44,8 @@ class SiswaPolicy
      */
     public function delete(User $user, Siswa $siswa): bool
     {
-        return $user->isAdmin();
+        // Nilai siswa ikut terhapus; ditolak kalau ada nilai yang punya riwayat perubahan
+        return $user->isAdmin() && ! $siswa->nilai()->has('logNilai')->exists();
     }
 
     /**
