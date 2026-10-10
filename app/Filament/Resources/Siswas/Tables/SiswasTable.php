@@ -18,14 +18,14 @@ class SiswasTable
                 TextColumn::make('kelas.nama')
                     ->label('Kelas')
                     ->sortable(),
-                TextColumn::make('orangTua.nama')
-                    ->label('Orang Tua')
-                    ->sortable(),
+                TextColumn::make('nama')
+                    ->searchable(),
                 TextColumn::make('nisn')
                     ->label('NISN')
                     ->searchable(),
-                TextColumn::make('nama')
-                    ->searchable(),
+                TextColumn::make('orangTua.nama')
+                    ->label('Orang Tua')
+                    ->sortable(),
                 TextColumn::make('jenis_kelamin')
                     ->searchable(),
                 TextColumn::make('created_at')
