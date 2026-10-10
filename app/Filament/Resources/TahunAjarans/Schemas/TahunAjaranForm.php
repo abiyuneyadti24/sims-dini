@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Filament\Resources\TahunAjarans\Schemas;
+
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Schema;
+
+class TahunAjaranForm
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                TextInput::make('nama')
+                    ->required(),
+                Select::make('semester')
+                    ->options([
+                        'ganjil' => 'Ganjil',
+                        'genap' => 'Genap',
+                    ])
+                    ->required(),
+                Toggle::make('aktif')
+                    ->required(),
+            ]);
+    }
+}

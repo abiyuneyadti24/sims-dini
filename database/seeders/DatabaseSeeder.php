@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         $ortu = OrangTua::create(['nama' => 'Pak Budi', 'no_whatsapp' => '6281200000000']);
         Siswa::create([
             'kelas_id' => $kelas->id, 'orang_tua_id' => $ortu->id,
-            'nis' => '2026001', 'nama' => 'Andi', 'jenis_kelamin' => 'L',
+            'nisn' => '2026001', 'nama' => 'Andi', 'jenis_kelamin' => 'L',
         ]);
 
         MataPelajaran::create(['kode' => 'MTK', 'nama' => 'Matematika', 'kkm' => 75]);
