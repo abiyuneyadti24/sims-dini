@@ -10,6 +10,22 @@ class OrangTua extends Model
 
     protected $guarded = [];
 
+    /**
+     * Cari orang tua berdasarkan nomor WhatsApp, buat baru kalau belum ada.
+     * Nomor dipakai sebagai penanda supaya kakak-adik memakai data yang sama.
+     */
+    public static function cariAtauBuat(?string $nama, ?string $noWhatsapp): ?self
+    {
+        if (blank($noWhatsapp)) {
+            return null;
+        }
+
+        return static::firstOrCreate(
+            ['no_whatsapp' => trim($noWhatsapp)],
+            ['nama' => trim($nama)],
+        );
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

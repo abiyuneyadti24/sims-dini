@@ -19,9 +19,9 @@ class OrangTuaResource extends Resource
 {
     protected static ?string $model = OrangTua::class;
 
-    protected static ?string $modelLabel = 'orang tua';
+    protected static ?string $modelLabel = 'Orang Tua/Wali';
 
-    protected static ?string $pluralModelLabel = 'orang tua';
+    protected static ?string $pluralModelLabel = 'Orang Tua/Wali';
 
     protected static ?string $slug = 'orang-tua';
 

@@ -14,7 +14,7 @@ class ListOrangTuas extends ListRecords
     {
         return [
             CreateAction::make()
-                ->label('Tambah orang tua'),
+                ->label('Tambah Orang Tua/Wali'),
         ];
     }
 }

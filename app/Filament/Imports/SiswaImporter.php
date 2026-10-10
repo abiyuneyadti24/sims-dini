@@ -32,9 +32,10 @@ class SiswaImporter extends Importer
                 ->requiredMapping()
                 ->rules(['required', 'max:1']),
             ImportColumn::make('nama_orang_tua')
+                ->label('Nama Orang Tua/Wali')
                 ->fillRecordUsing(fn () => null),
             ImportColumn::make('no_whatsapp_orang_tua')
-                ->label('No. WhatsApp orang tua')
+                ->label('No. WhatsApp Orang Tua/Wali')
                 ->fillRecordUsing(fn () => null),
         ];
     }
@@ -46,18 +47,14 @@ class SiswaImporter extends Importer
 
     protected function beforeSave(): void
     {
-        $nomor = $this->data['no_whatsapp_orang_tua'] ?? null;
-
-        if (blank($nomor)) {
-            return;
-        }
-
-        $orangTua = OrangTua::firstOrCreate(
-            ['no_whatsapp' => $nomor],
-            ['nama' => $this->data['nama_orang_tua'] ?? 'Orang tua ' . $this->data['nama']],
+        $orangTua = OrangTua::cariAtauBuat(
+            filled($this->data['nama_orang_tua'] ?? null) ? $this->data['nama_orang_tua'] : 'Orang Tua/Wali ' . $this->data['nama'],
+            $this->data['no_whatsapp_orang_tua'] ?? null,
         );
 
-        $this->record->orang_tua_id = $orangTua->id;
+        if ($orangTua) {
+            $this->record->orang_tua_id = $orangTua->id;
+        }
     }
 
     public static function getCompletedNotificationBody(Import $import): string

@@ -24,7 +24,7 @@ class SiswasTable
                     ->label('NISN')
                     ->searchable(),
                 TextColumn::make('orangTua.nama')
-                    ->label('Orang Tua')
+                    ->label('Orang Tua/Wali')
                     ->sortable(),
                 TextColumn::make('jenis_kelamin')
                     ->searchable(),
